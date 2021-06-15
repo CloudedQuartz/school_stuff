@@ -1,8 +1,9 @@
 
 '''
 user_input_eval(str, type):
-	Take input with input_text then use eval. if input is not
-	a defined type, return as string
+	Take input with input_text then convert to input_type.
+	if input does not match type, catch exception and
+	return None.
 	Returns "None" if -
 	1. input_text (first argument) is not str
 	2. usr_inp doesnt match out_type
