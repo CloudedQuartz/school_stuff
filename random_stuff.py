@@ -1,7 +1,4 @@
-'''
-TODO: 	print div (\n ot ------)
-		code cleanup
-'''
+
 # simple (hopefully exception free) input function
 '''
 user_input_type(str, type):
@@ -25,52 +22,69 @@ def user_input_type(input_text, out_type):
 		return out_type(usr_inp) 
 	except:
 		print("Please enter with proper type (%s)" %out_type)
-		exit()
+		return
+		
 
-# number sort functionality
-def numbersort():
-	final_user_input_1 = user_input_type("Enter the first number: ", int)
-	final_user_input_2 = user_input_type("Enter the first number: ", int)
-	final_user_input_3 = user_input_type("Enter the first number: ", int)
+# maximum value finder
+def numbermax():
+	print("Maximum value finder")
+	num_1 = user_input_type("Enter the first number: ", int)
+	num_2 = user_input_type("Enter the second number: ", int)
+	num_3 = user_input_type("Enter the third number: ", int)
+
+	# user_input_type can be None
+	if num_1 == None or num_2 == None or num_3 == None:
+		print("Invalid value")
+		return
 
 	# create list
-	num_list = [final_user_input_1, final_user_input_2, final_user_input_3]
+	num_list = [num_1, num_2, num_3]
 
 	# sort into descending order
 	num_list.sort(reverse=True)
 
-	# print first number in list
+	# print first number in list as it is highest
 	print(num_list[0])
 
-# calculator functionality
+# calculator
 def calculator():
-	print("WIP")
+	print("Calculator")
+	# convert to string for concat
+	num_1 = str(user_input_type("Enter the first number: ", float))
+	num_2 = str(user_input_type("Enter the second number: ", float))
+	operator = user_input_type("Enter the operator: ", str)
+
+	# user_input_type can be None
+	if num_1 == None or num_2 == None or operator == None:
+		print("Invalid value")
+		return
+
+	# allowed operators
+	# this is used to prevent security issues in eval()
+	valid_operators = ["+", "-", "*", "/", "//", "**", "%"]
+	if operator in valid_operators:
+		calc = num_1 + operator + num_2
+		print("The result is %d" %eval(calc))
+	else:
+		print("Please enter a valid operator")
 
 while 1:
 	# this program has multiple functions
 	num_functions = 3
-	functions = ["numbersort", "calculator", "exit"]
+	functions = ["numbermax", "calculator", "exit"]
 
 	temp = user_input_type("Enter the desired function\n\t1. %s\n\t2. %s\n\t3. %s\nFunction: "
 							%(functions[0], functions[1], functions[2]), int)
+
+	# user_input_type returns none in 2 conditions
+	if temp == None:
+		continue
+	
 	# Arrays start at 0
 	temp = temp - 1
 
 
 	# check validity of user selection
-	'''
-	# use i=0 for consistency, subtract 1 from num_functions to adjust for that
-	i = 0
-	while i <= (num_functions - 1):
-		if temp == i:
-			break
-		i = i + 1
-	else:
-		print("Please enter a valid choice")
-		exit()
-	'''
-
-	# valaidity check v2
 	try:
 		# eval is safe to use as user there are few set possibilities only
 		eval(functions[temp])()
