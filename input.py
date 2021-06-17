@@ -20,5 +20,5 @@ def user_input_type(input_text, out_type):
 	try:
 		return out_type(usr_inp) 
 	except:
-		print("Please enter with proper type")
-		return
+		print("Please enter with proper type (%s)" %out_type)
+		exit()

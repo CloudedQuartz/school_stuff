@@ -20,8 +20,8 @@ def user_input_type(input_text, out_type):
 	try:
 		return out_type(usr_inp) 
 	except:
-		print("Please enter with proper type")
-		return
+		print("Please enter with proper type (%s)" %out_type)
+		exit()
 
 final_user_input = user_input_type("Input a test number (int): ", int)
 if final_user_input != None:
