@@ -1,6 +1,6 @@
 
 '''
-user_input_eval(str, type):
+user_input_type(str, type):
 	Take input with input_text then convert to input_type.
 	if input does not match type, catch exception and
 	return None.
