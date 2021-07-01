@@ -1,4 +1,4 @@
-# check if a rectangle is a square
+# Age
 
 # simple (hopefully exception free) input function
 '''
@@ -25,15 +25,14 @@ def user_input_type(input_text, out_type):
 		print("Please enter with proper type (%s)" %out_type)
 		return
 
-while 1:
-	print("Price calculator\n\tPrice of 1 unit = Rs.100")
-	qty = user_input_type("Quantity: ", int)
-	if qty == None:
+for i in range(0,5):
+	print("Security")
+	age = user_input_type("Your age: ", int)
+	if age == None or age < 1:
 		print("Please enter a valid value")
 		pass
 
-	price = qty * 100
-	if price > 1000:
-		price = price * (9/10)
-		
-	print("price is", price)
+	if age > 8:
+		print("You are not allowed to enter")
+	else:
+		print("You may enter the magic show. Enjoy.")
